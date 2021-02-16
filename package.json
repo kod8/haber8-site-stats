@@ -1,0 +1,23 @@
+{
+  "name": "haber8-site-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kod8/haber8-site-stats.git"
+  },
+  "author": "abdullah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kod8/haber8-site-stats/issues"
+  },
+  "homepage": "https://github.com/kod8/haber8-site-stats#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "node-html-parser": "^2.1.0"
+  }
+}

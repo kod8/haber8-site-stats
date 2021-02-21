@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://node.kod8.app/softReset.css" />
+
+    <title>Kod8 Stats</title>
+</head>
+
+<style>
+    .body {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .page {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        --orange: rgba(255, 111, 0, 1);
+        --orange-half: rgba(255, 111, 0, .5);
+        --orange-quarter: rgba(255, 111, 0, .25);
+        --grey: hsl(0, 0%, 90%);
+        --white: hsl(0, 0%, 100%);
+        --black: hsl(0, 0%, 5%);
+
+        height: 100vh;
+        width: 80vw;
+        padding: 50px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .header,
+    .table {
+        width: 100%;
+    }
+
+    .header {
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        height: 100px;
+    }
+
+    .header div {
+        position: relative;
+        height: 75px;
+        width: 100%;
+    }
+
+    .header span:nth-child(1) {
+        display: block;
+        position: absolute;
+        left: 55px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 25px;
+        color: var(--black);
+        line-height: 1;
+        z-index: 3;
+    }
+
+    .header span:nth-child(2) {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 75px;
+        color: var(--orange-quarter);
+        line-height: 1;
+    }
+
+    .table {
+        flex-grow: 2;
+        font-size: 18px;
+    }
+
+    .table .row.title {
+        background-color: var(--orange);
+        color: var(--white)
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: 4fr 1fr 1fr 1fr;
+        width: 100%;
+        padding: .5em;
+    }
+
+    .row .cell:not(:nth-child(1)) {
+        text-align: center;
+    }
+
+    .row .cell:nth-child(1) {
+        font-weight: 400;
+    }
+
+    .cell {
+        margin: 0 10px;
+    }
+
+    .list {
+        height: 70vh;
+        overflow-y: scroll;
+        font-weight: 800;
+    }
+
+    .list .row:nth-child(2n-1) {
+        background: var(--grey);
+    }
+
+    @media screen and (max-width: 720px) {
+        .page {
+            width: 100vw;
+            padding: 10px;
+        }
+
+        .table {
+            font-size: 12px;
+        }
+
+        .row {
+            grid-template-columns: 40vw 20vw 16vw 12vw;
+        }
+
+        .cell {
+            margin: 0 5px;
+        }
+    }
+</style>
+
+<body>
+    <div class="page">
+        <div class="header">
+            <div>
+                <span>KOD8</span>
+                <span>STATS</span>
+            </div>
+
+        </div>
+        <div class="table">
+            <div class="row title">
+                <div class="cell name">SİTE ADI</div>
+                <div class="cell rank">ALEXA GLOBAL</div>
+                <div class="cell rank">ALEXA TÜRKİYE</div>
+                <div class="cell rank">KOD8</div>
+            </div>
+            <div class="list">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var listContainer = document.querySelector(".table .list");
+    fetch("../data.json")
+        .then(res => res.json())
+        .then(data => {
+
+            data.stats
+                .sort((a, b) => {
+                    a = a.globalRank ? Number(a.globalRank.split(",").join("")) : Infinity;
+                    b = b.globalRank ? Number(b.globalRank.split(",").join("")) : Infinity;
+                    if (a < b) {
+                        return -1;
+                    }
+                    if (a > b) {
+                        return 1;
+                    }
+                    return 0;
+                })
+                .forEach(site => {
+                    var siteElement = document.createElement("div");
+                    siteElement.classList.add("row")
+                    siteElement.classList.add("item")
+                    siteElement.innerHTML = `
+                        <div class="cell name">${site.url}</div>
+                        <div class="cell rank global">${site.globalRank ? site.globalRank : "-"}</div>
+                        <div class="cell rank turkey">${site.turkeyRank ? site.turkeyRank : "-"}</div>
+                        <div class="cell rank">-</div>
+                    `
+                    listContainer.appendChild(siteElement);
+                });
+        })
+
+</script>
+
+</html>

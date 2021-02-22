@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://node.kod8.app/softReset.css" />
-
+    <script src="./urls.js"></script>
     <title>Kod8 Stats</title>
 </head>
 
@@ -49,15 +49,17 @@
         display: flex;
         align-items: center;
         height: 100px;
+        position: relative;
     }
 
     .header div {
         position: relative;
         height: 75px;
         width: 100%;
+       
     }
 
-    .header span:nth-child(1) {
+    .header div span:nth-child(1) {
         display: block;
         position: absolute;
         left: 55px;
@@ -69,7 +71,7 @@
         z-index: 3;
     }
 
-    .header span:nth-child(2) {
+    .header div span:nth-child(2) {
         display: block;
         position: absolute;
         top: 0;
@@ -77,6 +79,12 @@
         font-size: 75px;
         color: var(--orange-quarter);
         line-height: 1;
+    }
+
+    .header span.lastUpdated {
+        font-weight:400;
+        position: absolute;
+        top:0;
     }
 
     .table {
@@ -125,11 +133,11 @@
         }
 
         .table {
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .row {
-            grid-template-columns: 40vw 20vw 16vw 12vw;
+            grid-template-columns: 40vw 20vw 16vw 16vw;
         }
 
         .cell {
@@ -145,6 +153,9 @@
                 <span>KOD8</span>
                 <span>STATS</span>
             </div>
+            <span class="lastUpdated"></span>
+            <div class="middle"></div>
+            <div class="right"></div>
 
         </div>
         <div class="table">
@@ -152,7 +163,7 @@
                 <div class="cell name">SİTE ADI</div>
                 <div class="cell rank">ALEXA GLOBAL</div>
                 <div class="cell rank">ALEXA TÜRKİYE</div>
-                <div class="cell rank">KOD8</div>
+                <div class="cell rank">ŞEHİR</div>
             </div>
             <div class="list">
 
@@ -167,10 +178,11 @@
         .then(res => res.json())
         .then(data => {
 
+document.querySelector(".lastUpdated").innerHTML="Son Güncelleme: " + data.lastUpdated
             data.stats
                 .sort((a, b) => {
-                    a = a.globalRank ? Number(a.globalRank.split(",").join("")) : Infinity;
-                    b = b.globalRank ? Number(b.globalRank.split(",").join("")) : Infinity;
+                    a = a.turkeyRank ? Number(a.turkeyRank.split(",").join("")) : Infinity;
+                    b = b.turkeyRank ? Number(b.turkeyRank.split(",").join("")) : Infinity;
                     if (a < b) {
                         return -1;
                     }
@@ -184,10 +196,10 @@
                     siteElement.classList.add("row")
                     siteElement.classList.add("item")
                     siteElement.innerHTML = `
-                        <div class="cell name">${site.url}</div>
+                        <div class="cell name">${site.site}</div>
                         <div class="cell rank global">${site.globalRank ? site.globalRank : "-"}</div>
                         <div class="cell rank turkey">${site.turkeyRank ? site.turkeyRank : "-"}</div>
-                        <div class="cell rank">-</div>
+                        <div class="cell city">${CITIES[site.city].name}</div>
                     `
                     listContainer.appendChild(siteElement);
                 });

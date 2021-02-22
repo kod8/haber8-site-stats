@@ -1,9 +1,8 @@
-const { SITELIST } = require("./urls.js");
+const { SITELIST,CITIES } = require("./urls.js");
 const fs = require("fs");
 const { parse } = require('node-html-parser');
 const { fetchAsync } = require('./utils.js');
 const BASEURL = "https://www.alexa.com/siteinfo/"
-const trimmedSiteList = SITELIST.map(_ => _.split("/")[2]).map(_ => _.startsWith("www") ? _.slice(4) : _)
 
 start();
 
@@ -11,10 +10,15 @@ async function start() {
     var data = {};
     var stats = [];
 
-    for (site of trimmedSiteList) {
-        var fullRawHTML = await fetchAsync(BASEURL + site);
+    for (site of SITELIST) {
+        var fullRawHTML = await fetchAsync(BASEURL + trimURL(site.url));
         const fullDOM = parse(fullRawHTML);
-        stats.push(scrapeData(fullDOM, site))
+        var newDataObj = scrapeData(fullDOM); 
+        newDataObj.site=trimURL(site.url);
+        newDataObj.url=site.url;
+        newDataObj.city = site.city;
+        stats.push(newDataObj);
+        console.log(site.url);
     }
 
     data.stats = stats;
@@ -25,11 +29,15 @@ async function start() {
     });
 }
 
-function scrapeData(fullDOM, site) {
+function scrapeData(fullDOM) {
     var siteData = {};
-    siteData.url = site;
     siteData.globalRank = fullDOM.querySelector(".rank-global .big.data") ? fullDOM.querySelector(".rank-global .big.data").innerText.split("#")[1].trim() : null;
     siteData.turkeyRank = fullDOM.querySelector("#countrydropdown .pull-right") ? fullDOM.querySelector("#countrydropdown .pull-right").innerText.split("#")[1].trim() : null;
-    console.log(site);
+    
     return siteData;
+}
+
+function trimURL(url){
+    var trimmed = url.split("/")[2]
+    return trimmed.startsWith("www") ? trimmed.slice(4) : trimmed;
 }

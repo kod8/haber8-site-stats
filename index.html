@@ -100,7 +100,16 @@
         color: var(--white);
         border-radius: 10px;
         padding-right: 25px;
+    }
 
+    .table .row .cell.sort{
+        cursor:pointer;
+    }
+
+    .table .row .cell.sort.active{
+        background-color: white;
+        color: var(--black);
+        border-radius: 5px;
     }
 
     .row {
@@ -167,10 +176,10 @@
         </div>
         <div class="table">
             <div class="row title">
-                <div class="cell name">SİTE ADI</div>
-                <div class="cell rank">ALEXA GLOBAL</div>
-                <div class="cell rank">ALEXA TÜRKİYE</div>
-                <div class="cell rank">ŞEHİR</div>
+                <div class="cell name sort" data-sort-by="site">SİTE ADI</div>
+                <div class="cell rank sort" data-sort-by="globalRank">ALEXA GLOBAL</div>
+                <div class="cell rank sort" data-sort-by="turkeyRank">ALEXA TÜRKİYE</div>
+                <div class="cell rank sort" data-sort-by="city">ŞEHİR</div>
             </div>
             <div class="list">
 
@@ -184,13 +193,16 @@
 
 <script>
     var listContainer = document.querySelector(".table .list");
+    var sortButtons = [...document.querySelectorAll(".table .title .cell.sort")];
+    sortButtons.forEach(button=>button.addEventListener("click",handleSort))
+
     var statData;
     fetch("./data.json")
         .then(res => res.json())
         .then(data => {
             statData = data.stats;
             document.querySelector(".lastUpdated").innerHTML = "Son Güncelleme: " + data.lastUpdated
-            var sorted = data.stats
+            var sorted = statData
                 .sort((a, b) => {
                     a = a.turkeyRank ? Number(a.turkeyRank.split(",").join("")) : Infinity;
                     b = b.turkeyRank ? Number(b.turkeyRank.split(",").join("")) : Infinity;
@@ -206,7 +218,8 @@
         })
 
         function renderList(data){
-
+            listContainer.innerHTML="";
+            // todo filter city
             data.forEach(site => {
                     var siteElement = document.createElement("div");
                     siteElement.classList.add("row")
@@ -219,8 +232,58 @@
                     `
                     listContainer.appendChild(siteElement);
                 });
+        }
+
+
+        function handleSort(e){
+            var el=e.target;
+            var sortBy = el.dataset.sortBy;
+        if(el.classList.contains("active")){
+            var list = [...listContainer.querySelectorAll(".row")];
+            listContainer.innerHTML="";
+            list.reverse().forEach(item=>listContainer.appendChild(item))
+        }
+        else{
+            sortButtons.forEach(button=>button.classList.remove("active"));
+            el.classList.add("active");
+            var sorted = sortItems(sortBy);
+            renderList(sorted);
+        }
             
         }
+
+        function sortItems(sortBy){
+            if(sortBy=="globalRank" || "turkeyRank"|| "city"){
+
+                return statData.sort((a, b) => {
+                    a = a[sortBy] ? Number(a[sortBy].split(",").join("")) : Infinity;
+                    b = b[sortBy] ? Number(b[sortBy].split(",").join("")) : Infinity;
+                    if (a < b) {
+                        return -1;
+                    }
+                    if (a > b) {
+                        return 1;
+                    }
+                    return 0;
+                })
+            }
+            else{
+                //todo sort names alphabeticaly
+            }
+
+        }
+
+        function filterByCity(){
+
+            
+        }
+
+    
+
+
+
+
+
 
 </script>
 

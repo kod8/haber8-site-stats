@@ -42,36 +42,38 @@
     .header,
     .table {
         width: 100%;
+        margin-bottom: 20px;
     }
 
     .header {
         font-weight: 800;
         display: flex;
-        align-items: center;
-        height: 100px;
-        position: relative;
+        justify-content:space-between;
+        width:100%;
+        flex-wrap: wrap;
     }
 
-    .header div {
+
+    .header .left div {
         position: relative;
         height: 75px;
         width: 100%;
 
     }
 
-    .header div span:nth-child(1) {
+    .header .left div span:nth-child(1) {
         display: block;
         position: absolute;
-        left: 55px;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        left: 0;
+        top: 0;
+        transform: translate(25%, 100%);
         font-size: 25px;
         color: var(--black);
         line-height: 1;
         z-index: 3;
     }
 
-    .header div span:nth-child(2) {
+    .header .left div span:nth-child(2) {
         display: block;
         position: absolute;
         top: 0;
@@ -81,18 +83,45 @@
         line-height: 1;
     }
 
-    .header span.lastUpdated {
+     span.lastUpdated {
         font-weight: 400;
-        position: absolute;
-        top: 0;
+        font-size: 12px;
+        align-self: flex-start;
+    }
+
+    .header .right{
+        margin-top:auto;
+        padding-bottom: 1em;
+    }
+
+    .header div.filterByCity {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    .header .filterByCity select{
+        z-index: 2;
+    width: 150px;
+    font-size: 16px;
+    border: none;
+    background:var(--orange);
+    color:white;
+    padding: .5em;
+    max-height: 75vh;
+    border-radius: 5px;
+    }
+    .header .filterByCity select option{
+        width: inherit;
+        background:var(--white);
+        color:black;
+    
     }
 
     .table {
-       
         font-size: 18px;
         border-radius: 10px;
         box-shadow: 1px 1px 20px 0px #888888a1;
-    
     }
 
     .table .row.title {
@@ -102,44 +131,58 @@
         padding-right: 25px;
     }
 
-    .table .row .cell.sort{
-        cursor:pointer;
+    .table .row .cell.sort {
+        cursor: pointer;
+        
     }
 
-    .table .row .cell.sort.active{
+    .table .row .cell.sort.active {
         background-color: white;
         color: var(--black);
         border-radius: 5px;
     }
 
+    .table .title .cell{
+            font-size: 14px;
+        }
+
     .row {
         display: grid;
-        grid-template-columns: 4fr 1fr 1fr 1fr;
+        grid-template-columns: .25fr 4fr 1.25fr 1.25fr 1fr;
         width: 100%;
         padding: .5em;
     }
 
-    .row .cell:not(:nth-child(1)) {
-        text-align: center;
+    .row .cell:not(:nth-child(2)) {
+        justify-content: center;
     }
 
-    .row .cell:nth-child(1) {
+    .row .cell:nth-child(1),.row .cell:nth-child(2) ,.row .cell:nth-child(5) {
         font-weight: 400;
     }
 
     .cell {
         margin: 0 10px;
+        display: flex;
+    align-items: center;
+    
     }
 
     .list {
         height: 60vh;
         overflow-y: scroll;
         font-weight: 800;
-        
     }
 
     .list .row:nth-child(2n-1) {
         background: var(--grey);
+    }
+
+    .bottom{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        flex-grow: 2;
     }
 
     @media screen and (max-width: 720px) {
@@ -147,17 +190,48 @@
             width: 100vw;
             padding: 10px;
         }
+        .header .left div{
+            margin-top: 1em;
+            margin-bottom: -2em;
+        }
+
+        .header .left div span:nth-child(1) {
+            transform: scale(.5) translate(-25%, 50%);
+    }
+
+    .header .left div span:nth-child(2) {
+        transform: scale(.5) translate(-50%, -50%);        
+    }
+    span.lastUpdated {
+        font-weight: 400;
+        font-size: 10px;
+        align-self: flex-start;
+    }
+
+
 
         .table {
-            font-size: 11px;
+            font-size: 10px;
+        }
+
+        .table .title .cell{
+            font-size: 9px;
+        }
+
+        .list {
+            height: 65vh;
         }
 
         .row {
-            grid-template-columns: 40vw 20vw 16vw 16vw;
+            grid-template-columns: 2.5vw 32vw 22vw 22vw 16vw;
         }
 
         .cell {
             margin: 0 5px;
+        }
+
+        .cell.name{
+            overflow-wrap: anywhere;
         }
     }
 </style>
@@ -165,20 +239,33 @@
 <body>
     <div class="page">
         <div class="header">
-            <div>
-                <span>KOD8</span>
-                <span>STATS</span>
+            <div class="left">
+                <span class="lastUpdated"></span>
+                <div>
+                    <span>KOD8</span>
+                    <span>STATS</span>
+                </div>
+               
             </div>
-            <span class="lastUpdated"></span>
-            <div class="middle"></div>
-            <div class="right"></div>
 
+            <div class="middle"></div>
+
+            <div class="right">
+                <div class="filterByCity">
+                    <select name="city" id="city">
+                        <option value="all">Tüm Şehirler</option>
+                    </select>
+                </div>
+            </div>
+            
         </div>
+
         <div class="table">
             <div class="row title">
+                <div class="cell " data-sort-by="site">#</div>
                 <div class="cell name sort" data-sort-by="site">SİTE ADI</div>
                 <div class="cell rank sort" data-sort-by="globalRank">ALEXA GLOBAL</div>
-                <div class="cell rank sort" data-sort-by="turkeyRank">ALEXA TÜRKİYE</div>
+                <div class="cell rank sort active" data-sort-by="turkeyRank">ALEXA TÜRKİYE</div>
                 <div class="cell rank sort" data-sort-by="city">ŞEHİR</div>
             </div>
             <div class="list">
@@ -194,97 +281,102 @@
 <script>
     var listContainer = document.querySelector(".table .list");
     var sortButtons = [...document.querySelectorAll(".table .title .cell.sort")];
-    sortButtons.forEach(button=>button.addEventListener("click",handleSort))
-
+    sortButtons.forEach(button => button.addEventListener("click", handleSort));
+    var cityInput = document.querySelector("select[name=city]")
+    cityInput.addEventListener("change" ,handleCityChange)
     var statData;
     fetch("./data.json")
         .then(res => res.json())
         .then(data => {
             statData = data.stats;
             document.querySelector(".lastUpdated").innerHTML = "Son Güncelleme: " + data.lastUpdated
-            var sorted = statData
-                .sort((a, b) => {
-                    a = a.turkeyRank ? Number(a.turkeyRank.split(",").join("")) : Infinity;
-                    b = b.turkeyRank ? Number(b.turkeyRank.split(",").join("")) : Infinity;
-                    if (a < b) {
-                        return -1;
-                    }
-                    if (a > b) {
-                        return 1;
-                    }
-                    return 0;
-                })
-                renderList(sorted)
+            renderSelectFilter();
+            var sorted = sortItems("turkeyRank");
+            renderList(sorted);
+            
         })
 
-        function renderList(data){
-            listContainer.innerHTML="";
-            // todo filter city
-            data.forEach(site => {
-                    var siteElement = document.createElement("div");
-                    siteElement.classList.add("row")
-                    siteElement.classList.add("item")
-                    siteElement.innerHTML = `
+    function renderList(data) {
+        listContainer.innerHTML = "";
+        // todo filter city
+        var index=1;
+        var city = cityInput.value;
+            data.filter(el=>{return el.city==city|| city=="all"})
+            .forEach((site) => {
+            var siteElement = document.createElement("div");
+            siteElement.classList.add("row")
+            siteElement.classList.add("item")
+            siteElement.innerHTML = `
+                        <div class="cell">${index}</div>
                         <div class="cell name">${site.site}</div>
                         <div class="cell rank global">${site.globalRank ? site.globalRank : "-"}</div>
                         <div class="cell rank turkey">${site.turkeyRank ? site.turkeyRank : "-"}</div>
                         <div class="cell city">${CITIES[site.city].name}</div>
                     `
-                    listContainer.appendChild(siteElement);
-                });
+            listContainer.appendChild(siteElement);
+            index++;
+        });
+        
+    }
+
+    function renderSelectFilter() {
+        for (plate in CITIES) {
+            var el = document.createElement("option");
+            el.value = plate
+            el.innerText = CITIES[plate].name;
+            cityInput.appendChild(el);
         }
 
+    }
 
-        function handleSort(e){
-            var el=e.target;
-            var sortBy = el.dataset.sortBy;
-        if(el.classList.contains("active")){
+    function handleSort(e) {
+        var el = e.target;
+        var sortBy = el.dataset.sortBy;
+        if (el.classList.contains("active")) {
             var list = [...listContainer.querySelectorAll(".row")];
-            listContainer.innerHTML="";
-            list.reverse().forEach(item=>listContainer.appendChild(item))
+            listContainer.innerHTML = "";
+            list.reverse().forEach(item => listContainer.appendChild(item))
         }
-        else{
-            sortButtons.forEach(button=>button.classList.remove("active"));
+        else {
+            sortButtons.forEach(button => button.classList.remove("active"));
             el.classList.add("active");
             var sorted = sortItems(sortBy);
             renderList(sorted);
         }
-            
+    }
+
+    function handleCityChange(e){
+        var city = e.target.value;
+        var sortBy = document.querySelector(".sort.active").dataset.sortBy;
+        var sorted = sortItems(sortBy);
+        renderList(sorted);
+    }
+
+    function sortItems(sortBy) {
+        if (sortBy == "globalRank" || "turkeyRank" || "city") {
+            return statData.sort((a, b) => {
+                a = a[sortBy] ? Number(a[sortBy].split(",").join("")) : Infinity;
+                b = b[sortBy] ? Number(b[sortBy].split(",").join("")) : Infinity;
+                if (a < b) {
+                    return -1;
+                }
+                if (a > b) {
+                    return 1;
+                }
+                return 0;
+            })
         }
-
-        function sortItems(sortBy){
-            if(sortBy=="globalRank" || "turkeyRank"|| "city"){
-
-                return statData.sort((a, b) => {
-                    a = a[sortBy] ? Number(a[sortBy].split(",").join("")) : Infinity;
-                    b = b[sortBy] ? Number(b[sortBy].split(",").join("")) : Infinity;
-                    if (a < b) {
-                        return -1;
-                    }
-                    if (a > b) {
-                        return 1;
-                    }
-                    return 0;
-                })
-            }
-            else{
-                //todo sort names alphabeticaly
-            }
-
+        else {
+            //todo sort names alphabeticaly
         }
+    }
 
-        function filterByCity(){
-
-            
-        }
-
-    
+    function filterByCity() {
 
 
-
-
-
+    }
 
 </script>
+
 
 </html>

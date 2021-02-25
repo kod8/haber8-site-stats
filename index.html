@@ -357,7 +357,8 @@
         .then(res => res.json())
         .then(data => {
             statData = data.stats;
-            document.querySelector(".lastUpdated").innerHTML = "<b>Son Güncelleme:</b> <br>" + data.lastUpdated
+            var lastUpdated = new Date(data.lastUpdated).toLocaleDateString("tr-tr",{ day:"2-digit", month: "long", year:"numeric"}) + " - " + new Date(data.lastUpdated).toLocaleTimeString("tr-tr", {hour: '2-digit', minute: '2-digit' });
+            document.querySelector(".lastUpdated").innerHTML = "<b>Son Güncelleme:</b> <br>" + lastUpdated;
             renderSelectFilter();
             var sorted = sortItems("turkeyRank");
             renderList(sorted);

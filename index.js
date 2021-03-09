@@ -41,7 +41,7 @@ function scrapeData(fullDOM,olddata) {
     siteData.globalRank = fullDOM.querySelector(".rank-global .big.data") ? fullDOM.querySelector(".rank-global .big.data").innerText.split("#")[1].trim() : null;
     siteData.turkeyRank = fullDOM.querySelector("#countrydropdown .pull-right") ? fullDOM.querySelector("#countrydropdown .pull-right").innerText.split("#")[1].trim() : null;
        
-    if(olddata==null||(olddata.globalRankOld&&olddata.turkeyRankOld)){
+    if(olddata==null||!(olddata.globalRankOld&&olddata.turkeyRankOld)){
         siteData.globalRankOld = siteData.globalRank;
         siteData.turkeyRankOld = siteData.turkeyRank;
     }

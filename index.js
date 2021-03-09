@@ -4,8 +4,6 @@ const { parse } = require('node-html-parser');
 const { fetchAsync } = require('./utils.js');
 const BASEURL = "https://www.alexa.com/siteinfo/"
 
-start();
-
 fs.readFile('./data.json', 'utf8', function (err,data) {
     if (err) {
       return console.log(err);

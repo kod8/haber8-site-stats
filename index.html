@@ -177,6 +177,14 @@
 
     }
 
+    .cell.rank.increased{
+        color:#155200;
+    }
+
+    .cell.rank.decreased{
+        color:#520000;
+    }
+
     .list {
         height: 60vh;
         overflow-y: scroll;
@@ -371,20 +379,22 @@
         var city = cityInput.value;
         data.filter(el => { return el.city == city || city == "all" })
             .forEach((site) => {
+                var globalStatus = site.globalRank>site.globalRankOld ? "decreased" : site.globalRank<site.globalRankOld ? "increased" : "";
+                var turkeyStatus = site.turkeyRank>site.turkeyRankOld ? "decreased" : site.turkeyRank<site.turkeyRankOld ? "increased" : "";
+
                 var siteElement = document.createElement("div");
-                siteElement.classList.add("row")
-                siteElement.classList.add("item")
+                siteElement.classList.add("row");
+                siteElement.classList.add("item");
                 siteElement.innerHTML = `
                         <div class="cell">${index}</div>
                         <div class="cell name">${site.site}</div>
-                        <div class="cell rank global">${site.globalRank ? site.globalRank : "-"}</div>
-                        <div class="cell rank turkey">${site.turkeyRank ? site.turkeyRank : "-"}</div>
+                        <div class="cell ${globalStatus} rank global">${site.globalRank ? site.globalRank : "-"}</div>
+                        <div class="cell ${turkeyStatus} rank turkey">${site.turkeyRank ? site.turkeyRank : "-"}</div>
                         <div class="cell city">${CITIES[site.city].name}</div>
                     `
                 listContainer.appendChild(siteElement);
                 index++;
             });
-
     }
 
     function renderSelectFilter() {

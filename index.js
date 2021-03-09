@@ -6,14 +6,23 @@ const BASEURL = "https://www.alexa.com/siteinfo/"
 
 start();
 
-async function start() {
+fs.readFile('./data.json', 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    start(JSON.parse(data))
+  });
+
+
+async function start(olddata) {
     var data = {};
     var stats = [];
 
     for (site of SITELIST) {
+        var oldObj = olddata.stats.filter((el)=>{return el.url==site})[0] ? olddata.stats.filter((el)=>{return el.url==site})[0] : null;
         var fullRawHTML = await fetchAsync(BASEURL + trimURL(site.url));
         const fullDOM = parse(fullRawHTML);
-        var newDataObj = scrapeData(fullDOM); 
+        var newDataObj = scrapeData(fullDOM,oldObj); 
         newDataObj.site=trimURL(site.url);
         newDataObj.url=site.url;
         newDataObj.city = site.city;
@@ -29,11 +38,21 @@ async function start() {
     });
 }
 
-function scrapeData(fullDOM) {
+function scrapeData(fullDOM,olddata) {
     var siteData = {};
     siteData.globalRank = fullDOM.querySelector(".rank-global .big.data") ? fullDOM.querySelector(".rank-global .big.data").innerText.split("#")[1].trim() : null;
     siteData.turkeyRank = fullDOM.querySelector("#countrydropdown .pull-right") ? fullDOM.querySelector("#countrydropdown .pull-right").innerText.split("#")[1].trim() : null;
+       
+    if(olddata==null||(olddata.globalRankOld&&olddata.turkeyRankOld)){
+        siteData.globalRankOld = siteData.globalRank;
+        siteData.turkeyRankOld = siteData.turkeyRank;
+    }
+    else{
+        siteData.globalRankOld = siteData.globalRank == olddata.globalRank ? olddata.globalRankOld : olddata.globalRank;
+        siteData.turkeyRankOld = siteData.turkeyRank == olddata.turkeyRank ? olddata.turkeyRankOld : olddata.turkeyRank;
+    }
     
+
     return siteData;
 }
 

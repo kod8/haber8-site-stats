@@ -17,7 +17,7 @@ async function start(olddata) {
     var stats = [];
 
     for (site of SITELIST) {
-        var oldObj = olddata.stats.filter((el)=>{return el.url==site})[0] ? olddata.stats.filter((el)=>{return el.url==site})[0] : null;
+        var oldObj = olddata.stats.filter((el)=>{return el.url==site.url})[0] ? olddata.stats.filter((el)=>{return el.url==site.url})[0] : null;
         var fullRawHTML = await fetchAsync(BASEURL + trimURL(site.url));
         const fullDOM = parse(fullRawHTML);
         var newDataObj = scrapeData(fullDOM,oldObj); 

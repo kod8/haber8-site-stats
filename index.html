@@ -178,11 +178,11 @@
     }
 
     .cell.rank.increased{
-        color:#155200;
+        color:darkgreen;
     }
 
     .cell.rank.decreased{
-        color:#520000;
+        color:darkred;
     }
 
     .list {
@@ -376,6 +376,7 @@
         var city = cityInput.value;
         data.filter(el => { return el.city == city || city == "all" })
             .forEach((site) => {
+                //▼▲
                 var globalStatus = site.globalRank>site.globalRankOld ? "decreased" : site.globalRank<site.globalRankOld ? "increased" : "";
                 var turkeyStatus = site.turkeyRank>site.turkeyRankOld ? "decreased" : site.turkeyRank<site.turkeyRankOld ? "increased" : "";
 

@@ -174,7 +174,12 @@
         margin: 0 10px;
         display: flex;
         align-items: center;
+            cursor:pointer;
 
+    }
+
+    .cell.rank{
+        cursor:help;
     }
 
     .cell.rank.increased{
@@ -283,6 +288,7 @@
 
         .cell {
             margin: 0 5px;
+
         }
 
         .cell.name {
@@ -386,8 +392,8 @@
                 siteElement.innerHTML = `
                         <div class="cell">${index}</div>
                         <div class="cell name">${site.site}</div>
-                        <div class="cell ${globalStatus} rank global">${site.globalRank ? site.globalRank : "-"}</div>
-                        <div class="cell ${turkeyStatus} rank turkey">${site.turkeyRank ? site.turkeyRank : "-"}</div>
+                        <div class="cell ${globalStatus} rank global" title="${site.globalRankOld} (Önceki Sıra)">${site.globalRank ? site.globalRank : "-"}</div>
+                        <div class="cell ${turkeyStatus} rank turkey" title="${site.turkeyRankOld} (Önceki Sıra)">${site.turkeyRank ? site.turkeyRank : "-"}</div>
                         <div class="cell city">${CITIES[site.city].name}</div>
                     `
                 listContainer.appendChild(siteElement);

@@ -24,6 +24,7 @@ const SITELIST = [
   { url: "http://www.duzcelife.com/", city: "81" },
   { url: "http://www.duzcehavadis.net/", city: "81" },
   { url: "http://www.duzcepusula.com/", city: "81" },
+  { url: "http://www.memleketimduzce.com/", city: "81" },
   { url: "http://www.malumathaber.com/", city: "81" },
   { url: "http://www.habergercek.org/", city: "81" },
   { url: "http://www.haberolduk.com/", city: "81" },

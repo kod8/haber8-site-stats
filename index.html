@@ -370,7 +370,11 @@
             statData = data.stats;
             var lastUpdated = new Date(data.lastUpdated).toLocaleDateString("tr-tr",{ day:"2-digit", month: "long", year:"numeric"}) + " - " + new Date(data.lastUpdated).toLocaleTimeString("tr-tr", {hour: '2-digit', minute: '2-digit' });
             document.querySelector(".lastUpdated").innerHTML = "<b>Son Güncelleme:</b> <br>" + lastUpdated;
-            renderSelectFilter();
+
+             var citiesToShow=new Set();
+            statData.forEach(site=>citiesToShow.add(site.city));
+
+            renderSelectFilter(citiesToShow);
             var sorted = sortItems("turkeyRank");
             renderList(sorted);
         })
@@ -401,12 +405,12 @@
             });
     }
 
-    function renderSelectFilter() {
+    function renderSelectFilter(citiesToShow) {
         for (plate in CITIES) {
             var el = document.createElement("option");
             el.value = plate
             el.innerText = CITIES[plate].name;
-            cityInput.appendChild(el);
+            citiesToShow.has(plate) ? cityInput.appendChild(el):"";
         }
     }
 

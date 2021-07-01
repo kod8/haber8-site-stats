@@ -32,6 +32,8 @@ const SITELIST = [
   { url: "http://www.duzcedebugun.com/", city: "81" },
   { url: "http://www.merkeztv.com.tr/", city: "14" },
   { url: "http://www.duzceanaliz.com/", city: "81" },
+  { url: "http://duzcekent.com/", city: "81" },
+  { url: "http://haber380.com/", city: "81" },
   { url: "https://www.medyajans.com/", city: "0" },
   { url: "http://superhaber.tv/", city: "0" },
   { url: "http://www.haber7.com/", city: "0" },

@@ -1,2 +1,6 @@
 # haber8-site-stats 
-- alexa 
+- Ulusal ve yerel haber sitelerinin Alexa puanlarını listeler.
+
+https://h8stats.kod8.app/
+
+![img](./preview.png) 

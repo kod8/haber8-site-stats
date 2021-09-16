@@ -1,0 +1,14 @@
+﻿{
+  "name": "Haber8 Stats",
+  "short_name": "H8Stats",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#2e2e2e",
+  "theme_color": "#f36717",
+  "description": "Haber8 Stats",
+  "icons": [{
+    "src": "/assets/logo.png",
+    "sizes": "144x144"
+  }]
+ 
+}

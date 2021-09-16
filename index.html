@@ -330,7 +330,7 @@
 
             <div class="right">
                 <div class="filterByCity">
-                    <select name="city" id="city">
+                    <select name="city" id="city" multiple>
                         <option value="all">Tüm Şehirler</option>
                     </select>
                 </div>
@@ -383,8 +383,8 @@
         listContainer.innerHTML = "";
         // todo filter city
         var index = 1;
-        var city = cityInput.value;
-        data.filter(el => { return el.city == city || city == "all" })
+        var city = cityInput.multiple ? [...cityInput.selectedOptions].map(_=>_.value): [cityInput.value];
+        data.filter(el => { return city.includes(el.city) || city == "all" ||  city == "" })
             .forEach((site) => {
                 //▼▲
                 var globalStatus = site.globalRank>site.globalRankOld ? "decreased" : site.globalRank<site.globalRankOld ? "increased" : "";

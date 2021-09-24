@@ -9,6 +9,10 @@
   "icons": [{
     "src": "/assets/logo.png",
     "sizes": "144x144"
+  },
+{
+    "src": "/assets/logo-big.png",
+    "sizes": "512x512"
   }]
  
 }

@@ -4,10 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/logo-big.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f36717">
+    <link rel="apple-touch-startup-image" href="/assets/splash.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://node.kod8.app/softReset.css" />
+
+
     <script src="./urls.js"></script>
     <title>Kod8 Stats</title>
 </head>
@@ -177,6 +183,12 @@
         align-items: center;
             cursor:pointer;
 
+    }
+
+    .cell a{
+        text-decoration: inherit;
+        font-weight:800;
+        color:inherit;
     }
 
     .cell.rank{
@@ -396,7 +408,7 @@
                 siteElement.classList.add("item");
                 siteElement.innerHTML = `
                         <div class="cell">${index}</div>
-                        <div class="cell name">${site.site}</div>
+                        <div class="cell name"><a href="http://${site.site}" target="_blank">${site.site}</a></div>
                         <div class="cell ${globalStatus} rank global" title="${site.globalRankOld} (Önceki Sıra)">${site.globalRank ? site.globalRank : "-"}</div>
                         <div class="cell ${turkeyStatus} rank turkey" title="${site.turkeyRankOld} (Önceki Sıra)">${site.turkeyRank ? site.turkeyRank : "-"}</div>
                         <div class="cell city">${CITIES[site.city].name}</div>

@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.17228536"
-     inkscape:cx="847.43128"
-     inkscape:cy="1140.5496"
+     inkscape:zoom="0.12182414"
+     inkscape:cx="2708.8226"
+     inkscape:cy="1071.2162"
      inkscape:current-layer="svg8" />
   <defs
      id="defs2">
@@ -54,6 +54,13 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <path
+     d="m 922.8597,-146.11837 h 433.799 v 771.19819 h -433.799 z"
+     style="fill:#2e2e2e;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.817036"
+     id="path18637"
+     inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/splash.png"
+     inkscape:export-xdpi="63.240002"
+     inkscape:export-ydpi="63.240002" />
   <g
      id="layer1" />
   <path
@@ -66,29 +73,97 @@
      width="136.54375"
      height="136.54375"
      x="395.55219"
-     y="336.69412" />
+     y="336.69412"
+     inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+     inkscape:export-xdpi="95.242744"
+     inkscape:export-ydpi="95.242744" />
   <path
      d="m 489.74086,413.66027 c 6.54118,6.97208 10.18958,15.04362 10.9403,24.29659 0.6793,8.78578 -1.4601,17.43562 -6.34924,25.90386 -7.82249,13.54893 -18.60684,21.08492 -32.40365,22.62063 -12.26235,1.31394 -25.40113,-2.05372 -39.4614,-10.17142 -13.83683,-7.9887 -23.34099,-17.65139 -28.46714,-28.91948 -5.86076,-12.79982 -4.94704,-25.82126 2.72799,-39.11479 4.99974,-8.65982 11.49492,-14.96533 19.48035,-18.83363 8.32474,-4.01352 17.25819,-4.94859 26.81393,-2.75491 -10.24679,-13.54252 -11.3203,-27.32802 -3.25783,-41.29263 6.75248,-11.69565 16.55306,-18.2654 29.38847,-19.75976 11.466,-1.2627 23.27964,1.59562 35.39072,8.58795 12.46277,7.19539 20.91729,16.16696 25.31847,26.84575 4.83096,11.77944 3.76618,23.73375 -3.22615,35.84481 -7.95172,13.77278 -20.25617,19.36591 -36.89482,16.74703 z m 2.103,-57.07238 c -5.11274,-2.95184 -9.99151,-4.02181 -14.6359,-3.20957 -4.95195,0.9759 -8.88292,3.94684 -11.76107,8.93194 -2.91503,5.04898 -3.58634,9.90206 -2.01454,14.55908 1.38533,4.46395 4.65036,8.1811 9.79512,11.15143 11.47197,6.62334 20.24984,4.70359 26.30128,-5.77781 2.87807,-4.98496 3.59498,-9.76909 2.11878,-14.37091 -1.47599,-4.60169 -4.72266,-8.35063 -9.80367,-11.28416 z M 435.7688,453.2702 c 6.45497,3.72678 12.55048,4.90265 18.3373,3.51424 5.76811,-1.35654 10.5132,-5.22118 14.18466,-11.58034 3.70836,-6.42306 4.75151,-12.51001 3.09252,-18.19725 -1.69076,-5.70563 -5.73857,-10.42871 -12.25737,-14.19234 -6.42306,-3.70836 -12.60125,-4.88926 -18.5205,-3.49219 -5.9011,1.36504 -10.69662,5.24325 -14.368,11.60226 -3.63453,6.29518 -4.54484,12.37375 -2.72624,18.15316 1.81886,5.77956 5.89837,10.52095 12.25763,14.19246"
      style="opacity:1;fill:#f36717;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.857817"
      id="path1205"
-     clip-path="url(#clipPath17259)" />
+     clip-path="url(#clipPath17259)"
+     inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+     inkscape:export-xdpi="95.242744"
+     inkscape:export-ydpi="95.242744" />
   <path
      d="m 395.55219,336.69412 v 54.81754 l 8.54305,-43.30817 18.3912,-11.39073 z"
      style="fill:#f36717;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.618837"
-     id="path1207" />
+     id="path1207"
+     inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+     inkscape:export-xdpi="95.242744"
+     inkscape:export-ydpi="95.242744" />
   <path
      d="m 532.09595,473.23785 v -54.81754 l -8.54285,43.30837 -18.39121,11.39055 z"
      style="fill:#f36717;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.618837"
-     id="path1209" />
+     id="path1209"
+     inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+     inkscape:export-xdpi="95.242744"
+     inkscape:export-ydpi="95.242744" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:25.6611px;line-height:1.2;font-family:Montserrat;-inkscape-font-specification:'Montserrat Heavy';text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;letter-spacing:3.96875px;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:5.09182;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
      x="412.92996"
      y="408.10239"
-     id="text6753"><tspan
+     id="text6753"
+     inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+     inkscape:export-xdpi="95.242744"
+     inkscape:export-ydpi="95.242744"><tspan
        sodipodi:role="line"
        id="tspan6751"
        style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-family:Montserrat;-inkscape-font-specification:'Montserrat Heavy';fill:#ffffff;stroke-width:5.09182"
        x="412.92996"
        y="408.10239">STATS</tspan></text>
+  <g
+     id="g21391"
+     transform="matrix(1.7251759,0,0,1.7251759,339.5811,-459.15685)"
+     inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/splash.png"
+     inkscape:export-xdpi="63.240002"
+     inkscape:export-ydpi="63.240002">
+    <rect
+       style="opacity:1;vector-effect:none;fill:#2e2e2e;fill-opacity:1;fill-rule:evenodd;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect21373"
+       width="136.54375"
+       height="136.54375"
+       x="395.55219"
+       y="336.69412"
+       inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+       inkscape:export-xdpi="95.242744"
+       inkscape:export-ydpi="95.242744" />
+    <path
+       d="m 489.74086,413.66027 c 6.54118,6.97208 10.18958,15.04362 10.9403,24.29659 0.6793,8.78578 -1.4601,17.43562 -6.34924,25.90386 -7.82249,13.54893 -18.60684,21.08492 -32.40365,22.62063 -12.26235,1.31394 -25.40113,-2.05372 -39.4614,-10.17142 -13.83683,-7.9887 -23.34099,-17.65139 -28.46714,-28.91948 -5.86076,-12.79982 -4.94704,-25.82126 2.72799,-39.11479 4.99974,-8.65982 11.49492,-14.96533 19.48035,-18.83363 8.32474,-4.01352 17.25819,-4.94859 26.81393,-2.75491 -10.24679,-13.54252 -11.3203,-27.32802 -3.25783,-41.29263 6.75248,-11.69565 16.55306,-18.2654 29.38847,-19.75976 11.466,-1.2627 23.27964,1.59562 35.39072,8.58795 12.46277,7.19539 20.91729,16.16696 25.31847,26.84575 4.83096,11.77944 3.76618,23.73375 -3.22615,35.84481 -7.95172,13.77278 -20.25617,19.36591 -36.89482,16.74703 z m 2.103,-57.07238 c -5.11274,-2.95184 -9.99151,-4.02181 -14.6359,-3.20957 -4.95195,0.9759 -8.88292,3.94684 -11.76107,8.93194 -2.91503,5.04898 -3.58634,9.90206 -2.01454,14.55908 1.38533,4.46395 4.65036,8.1811 9.79512,11.15143 11.47197,6.62334 20.24984,4.70359 26.30128,-5.77781 2.87807,-4.98496 3.59498,-9.76909 2.11878,-14.37091 -1.47599,-4.60169 -4.72266,-8.35063 -9.80367,-11.28416 z M 435.7688,453.2702 c 6.45497,3.72678 12.55048,4.90265 18.3373,3.51424 5.76811,-1.35654 10.5132,-5.22118 14.18466,-11.58034 3.70836,-6.42306 4.75151,-12.51001 3.09252,-18.19725 -1.69076,-5.70563 -5.73857,-10.42871 -12.25737,-14.19234 -6.42306,-3.70836 -12.60125,-4.88926 -18.5205,-3.49219 -5.9011,1.36504 -10.69662,5.24325 -14.368,11.60226 -3.63453,6.29518 -4.54484,12.37375 -2.72624,18.15316 1.81886,5.77956 5.89837,10.52095 12.25763,14.19246"
+       style="opacity:1;fill:#f36717;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.857817"
+       id="path21375"
+       clip-path="url(#clipPath17259)"
+       inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+       inkscape:export-xdpi="95.242744"
+       inkscape:export-ydpi="95.242744" />
+    <path
+       d="m 395.55219,336.69412 v 54.81754 l 8.54305,-43.30817 18.3912,-11.39073 z"
+       style="fill:#f36717;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.618837"
+       id="path21377"
+       inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+       inkscape:export-xdpi="95.242744"
+       inkscape:export-ydpi="95.242744" />
+    <path
+       d="m 532.09595,473.23785 v -54.81754 l -8.54285,43.30837 -18.39121,11.39055 z"
+       style="fill:#f36717;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.618837"
+       id="path21379"
+       inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+       inkscape:export-xdpi="95.242744"
+       inkscape:export-ydpi="95.242744" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:25.6611px;line-height:1.2;font-family:Montserrat;-inkscape-font-specification:'Montserrat Heavy';text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;letter-spacing:3.96875px;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:5.09182;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+       x="412.92996"
+       y="408.10239"
+       id="text21383"
+       inkscape:export-filename="/home/abdullah/git/kod8/haber8-site-stats/assets/logo-big.png"
+       inkscape:export-xdpi="95.242744"
+       inkscape:export-ydpi="95.242744"><tspan
+         sodipodi:role="line"
+         id="tspan21381"
+         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-family:Montserrat;-inkscape-font-specification:'Montserrat Heavy';fill:#ffffff;stroke-width:5.09182"
+         x="412.92996"
+         y="408.10239">STATS</tspan></text>
+  </g>
 </svg>

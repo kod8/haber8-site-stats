@@ -38,6 +38,7 @@ const SITELIST = [
   { url: "http://www.yigilcaninsesi.net/", city: "81" },
   { url: "http://www.cagdasgumusova.com/", city: "81" },
   { url: "https://www.81duzcehaber.com/", city: "81" },
+  { url: "https://www.bizimduzce.com/", city: "81" },
   { url: "http://www.merkeztv.com.tr/", city: "14" },
   { url: "http://www.bizbolulular.com/", city: "14" },
   { url: "https://www.koroglugazetesi.com/", city: "14" },

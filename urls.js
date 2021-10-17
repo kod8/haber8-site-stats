@@ -40,6 +40,7 @@ const SITELIST = [
   { url: "https://www.81duzcehaber.com/", city: "81" },
   { url: "https://www.bizimduzce.com/", city: "81" },
   { url: "http://duzcehaber.com/", city: "81" },
+  { url: "http://gazeteduzce.com/", city: "81" },
   { url: "http://www.merkeztv.com.tr/", city: "14" },
   { url: "http://www.bizbolulular.com/", city: "14" },
   { url: "https://www.koroglugazetesi.com/", city: "14" },

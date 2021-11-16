@@ -290,6 +290,7 @@ const SITELIST = [
   { url: "https://www.adapazarinet.com/", city: "54" },
   { url: "http://adamanset.net/", city: "54" },
   { url: "https://www.tv264.com.tr/", city: "54" },
+  { url: "https://www.sozsakarya.com/", city: "54" },
   { url: "http://www.degisimmedya.com/", city: "67" },
   { url: "http://www.inanisgazetesi.com/", city: "67" },
   { url: "http://www.yeniufuk.com.tr/", city: "67" },

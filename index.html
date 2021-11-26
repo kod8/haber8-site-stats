@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://node.kod8.app/softReset.css" />
 
 
-    <script src="./urls.js"></script>
+    <script src="./urls.js" ></script>
     <title>Kod8 Stats</title>
 </head>
 
@@ -105,15 +105,16 @@
     .header .right {
         margin-top: auto;
         padding-bottom: 1em;
+        display:flex;
     }
 
-    .header div.filterByCity {
+    .header div.filterByCity,.header div.filterBySoftware {
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
     }
 
-    .header .filterByCity select {
+    .header  select {
         z-index: 2;
         width: 150px;
         font-size: 16px;
@@ -123,9 +124,10 @@
         padding: .5em;
         max-height: 75vh;
         border-radius: 5px;
+        margin:0 1em;
     }
 
-    .header .filterByCity select option {
+    .header select option {
         width: inherit;
         background: var(--white);
         color: black;
@@ -275,7 +277,7 @@
             display: block;
         }
 
-        .header .filterByCity select {
+        .header  select {
 
             font-size: 12px;
             width: 150px;
@@ -347,6 +349,12 @@
                         <option value="all">Tüm Şehirler</option>
                     </select>
                 </div>
+
+                <div class="filterBySoftware">
+                    <select name="yazilim" id="yazilim" multiple>
+                        <option value="all">Tüm Yazılımlar</option>
+                    </select>
+                </div>
             </div>
 
         </div>
@@ -370,12 +378,15 @@
     </div>
 </body>
 
-<script>
+<script >
     var listContainer = document.querySelector(".table .list");
     var sortButtons = [...document.querySelectorAll(".table .title .cell.sort")];
     sortButtons.forEach(button => button.addEventListener("click", handleSort));
     var cityInput = document.querySelector("select[name=city]")
+    var softwareInput = document.querySelector("select[name=yazilim]")
     cityInput.addEventListener("change", handleCityChange)
+    softwareInput.addEventListener("change", handleSoftwareChange)
+
     var statData;
     fetch("./data.json")
         .then(res => res.json())
@@ -387,7 +398,17 @@
              var citiesToShow=new Set();
             statData.forEach(site=>citiesToShow.add(site.city));
 
+            var softwaresToShow=new Set();
+            statData.forEach(site=>{
+                var yazilim;
+                if((site.yazilim==undefined)||(site.yazilim=="")){
+                    site.yazilim = "Bilinmiyor";
+                }
+                softwaresToShow.add(site.yazilim);
+            });
+
             renderSelectFilter(citiesToShow);
+            renderSoftwareSelectFilter(softwaresToShow);
             var sorted = sortItems("turkeyRank");
             renderList(sorted);
         })
@@ -397,7 +418,9 @@
         // todo filter city
         var index = 1;
         var city = cityInput.multiple ? [...cityInput.selectedOptions].map(_=>_.value): [cityInput.value];
-        data.filter(el => { return city.includes(el.city) || city == "all" ||  city == "" })
+        var software = softwareInput.multiple ? [...softwareInput.selectedOptions].map(_=>_.value): [softwareInput.value];
+
+        data.filter(el => { return (city.includes(el.city) || city == "all" ||  city == "") && (software.includes(el.yazilim) || software == "all" ||  software == "") })
             .forEach((site) => {
                 //▼▲
                 var globalStatus = site.globalRank>site.globalRankOld ? "decreased" : site.globalRank<site.globalRankOld ? "increased" : "";
@@ -423,7 +446,23 @@
             var el = document.createElement("option");
             el.value = plate
             el.innerText = CITIES[plate].name;
-            citiesToShow.has(plate) ? cityInput.appendChild(el):"";
+            if(citiesToShow.has(plate)) {
+                cityInput.appendChild(el);
+                el.innerHTML += ' (' + statData.filter(_=>_.city==plate).length + ')';
+            } 
+        }
+    }
+
+    function renderSoftwareSelectFilter(softwaresToShow) {
+
+        for (software of softwaresToShow) {
+            var el = document.createElement("option"); 
+            el.value = (software==undefined) || (software=="") ? "Bilinmiyor" : software
+            el.innerText = (software==undefined)||(software=="") ? "Bilinmiyor" : software;
+                softwareInput.appendChild(el);
+                el.innerHTML += ' (' + statData.filter(_=>_.yazilim==software).length + ')';
+            
+
         }
     }
 
@@ -445,6 +484,13 @@
 
     function handleCityChange(e) {
         var city = e.target.value;
+        var sortBy = document.querySelector(".sort.active").dataset.sortBy;
+        var sorted = sortItems(sortBy);
+        renderList(sorted);
+    }
+
+    function handleSoftwareChange(e) {
+        var software = e.target.value;
         var sortBy = document.querySelector(".sort.active").dataset.sortBy;
         var sorted = sortItems(sortBy);
         renderList(sorted);

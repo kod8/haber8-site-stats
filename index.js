@@ -24,6 +24,7 @@ async function start(olddata) {
         newDataObj.site=trimURL(site.url);
         newDataObj.url=site.url;
         newDataObj.city = site.city;
+        newDataObj.yazilim = site.yazilim;
         stats.push(newDataObj);
         console.log(site.url);
     }

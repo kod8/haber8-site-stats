@@ -110,8 +110,8 @@
 
     .header div.filterByCity,.header div.filterBySoftware {
         display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
+        flex-direction: column;
+        align-items: center;
     }
 
     .header  select {
@@ -345,12 +345,14 @@
 
             <div class="right">
                 <div class="filterByCity">
+                    <label>Şehirler</label>
                     <select name="city" id="city" multiple>
                         <option value="all">Tüm Şehirler</option>
                     </select>
                 </div>
 
                 <div class="filterBySoftware">
+                    <label>Haber Yazılımı</label>
                     <select name="yazilim" id="yazilim" multiple>
                         <option value="all">Tüm Yazılımlar</option>
                     </select>
@@ -395,17 +397,30 @@
             var lastUpdated = new Date(data.lastUpdated).toLocaleDateString("tr-tr",{ day:"2-digit", month: "long", year:"numeric"}) + " - " + new Date(data.lastUpdated).toLocaleTimeString("tr-tr", {hour: '2-digit', minute: '2-digit' });
             document.querySelector(".lastUpdated").innerHTML = "<b>Son Güncelleme:</b> <br>" + lastUpdated;
 
-             var citiesToShow=new Set();
-            statData.forEach(site=>citiesToShow.add(site.city));
-
-            var softwaresToShow=new Set();
+            window.citiesToShow={};
+            window.softwaresToShow={};
             statData.forEach(site=>{
-                var yazilim;
-                if((site.yazilim==undefined)||(site.yazilim=="")){
-                    site.yazilim = "Bilinmiyor";
+                if(citiesToShow[site.city]){
+                    citiesToShow[site.city].count++;
                 }
-                softwaresToShow.add(site.yazilim);
+                else{
+                    citiesToShow[site.city]={plate:site.city, count:1}
+                }
+                
+                if((site.yazilim==undefined)||(site.yazilim=="")){
+                    site.yazilim = site.city=="0" ? "Ulusal" : "Bilinmiyor";
+                }
+
+                if(softwaresToShow[site.yazilim]){
+                    softwaresToShow[site.yazilim].count++;
+                }
+                else{
+                    softwaresToShow[site.yazilim]={name:site.yazilim, count:1}
+                }
             });
+
+            window.citiesToShow=Object.values(citiesToShow).sort((a,b)=>b.count-a.count);
+            window.softwaresToShow=Object.values(softwaresToShow).sort((a,b)=>b.count-a.count);
 
             renderSelectFilter(citiesToShow);
             renderSoftwareSelectFilter(softwaresToShow);
@@ -442,28 +457,27 @@
     }
 
     function renderSelectFilter(citiesToShow) {
-        for (plate in CITIES) {
+        for (city of citiesToShow) {
             var el = document.createElement("option");
-            el.value = plate
-            el.innerText = CITIES[plate].name;
-            if(citiesToShow.has(plate)) {
-                cityInput.appendChild(el);
-                el.innerHTML += ' (' + statData.filter(_=>_.city==plate).length + ')';
-            } 
+            el.value = city.plate
+            el.innerText = CITIES[city.plate].name + ' (' + city.count + ')';
+            cityInput.appendChild(el);
         }
+
+        document.querySelector(".filterByCity label").innerHTML += " ("+citiesToShow.length+")";
     }
 
     function renderSoftwareSelectFilter(softwaresToShow) {
 
         for (software of softwaresToShow) {
             var el = document.createElement("option"); 
-            el.value = (software==undefined) || (software=="") ? "Bilinmiyor" : software
-            el.innerText = (software==undefined)||(software=="") ? "Bilinmiyor" : software;
+            el.value =  software.name
+            el.innerText = software.name;
                 softwareInput.appendChild(el);
-                el.innerHTML += ' (' + statData.filter(_=>_.yazilim==software).length + ')';
-            
-
+                el.innerHTML += ' (' + software.count + ')';
         }
+        document.querySelector(".filterBySoftware label").innerHTML += " ("+softwaresToShow.length+")";
+
     }
 
     function handleSort(e) {

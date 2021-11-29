@@ -373,6 +373,25 @@
 
             </div>
         </div>
+
+
+
+        <div class="rapor">
+            <div class="table sehirAnaliz">
+                <div class="row title">Şehirler</div>
+                <div class="list"></div>
+            </div>
+
+            <div class="table yazilimAnaliz">
+                <div class="row title">Haber Yazılımları</div>
+                <div class="list"></div>
+
+            </div>
+        </div>
+
+
+
+
         <div class="bottom">
             <a href="https://www.alexa.com/" target="_blank"><img src="./alexa-logo.png" alt="alexa"></a>
             <div class="kod8"><a href="https://www.kod8.net/">Kod8 Yazılım Teknolojileri Tic. Ltd. Şti.</a> </div>
@@ -381,6 +400,9 @@
 </body>
 
 <script >
+var sehirAnaliz = document.querySelector(".sehirAnaliz .list");
+var yazilimAnaliz = document.querySelector(".yazilimAnaliz .list");
+
     var listContainer = document.querySelector(".table .list");
     var sortButtons = [...document.querySelectorAll(".table .title .cell.sort")];
     sortButtons.forEach(button => button.addEventListener("click", handleSort));
@@ -457,24 +479,52 @@
     }
 
     function renderSelectFilter(citiesToShow) {
+        var i=0;
+
         for (city of citiesToShow) {
+            i++;
             var el = document.createElement("option");
             el.value = city.plate
             el.innerText = CITIES[city.plate].name + ' (' + city.count + ')';
             cityInput.appendChild(el);
-        }
 
+            var analizEl = document.createElement("div");
+            analizEl.classList.add("row")
+            analizEl.innerHTML=`
+            <div class="cell">${i}</div>
+            <div class="cell">${CITIES[city.plate].name}</div>
+            <div class="cell">${city.count}</div>
+
+            `
+            sehirAnaliz.appendChild(analizEl);
+
+        }
         document.querySelector(".filterByCity label").innerHTML += " ("+citiesToShow.length+")";
     }
 
     function renderSoftwareSelectFilter(softwaresToShow) {
-
+var i=0;
         for (software of softwaresToShow) {
+            i++;
             var el = document.createElement("option"); 
             el.value =  software.name
             el.innerText = software.name;
                 softwareInput.appendChild(el);
                 el.innerHTML += ' (' + software.count + ')';
+
+
+                var analizEl = document.createElement("div");
+                analizEl.classList.add("row")
+
+            analizEl.innerHTML=`
+            <div class="cell">${i}</div>
+            <div class="cell">${software.name}</div>
+            <div class="cell">${software.count}</div>
+
+            `
+            yazilimAnaliz.appendChild(analizEl);
+
+
         }
         document.querySelector(".filterBySoftware label").innerHTML += " ("+softwaresToShow.length+")";
 

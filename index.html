@@ -241,6 +241,52 @@
         width: 150px;
 
     }
+    .rapor{
+    display: flex;
+    width: 100%;
+  }
+
+.rapor .table {
+    width: 100%;
+}
+.rapor .table + .table {
+    margin-left: 2em;
+}
+
+
+.rapor .table{
+    overflow: scroll;
+    position: relative;
+    
+}
+
+.rapor .table label{
+   font-weight: 800;
+    padding:1em;
+    width:100%;
+        display: block;
+    position: absolute;
+    top:0;
+    background: rgb(234,234,234);
+
+}
+
+.rapor .table label +div{
+margin-top:3em;
+
+}
+
+.rapor .table .row{
+   display: flex;
+    justify-content: space-between;
+    
+}
+
+.rapor .table .row .cell:nth-child(2){
+    justify-content: flex-end!important;
+    width:100%;
+    
+}
 
     @media screen and (max-width: 720px) {
         .page {
@@ -326,6 +372,7 @@
         * {
             border-radius: 5px !important;
         }
+        
     }
 </style>
 

@@ -291,6 +291,7 @@ const SITELIST = [
   { url: "https://www.adapazarinet.com/", city: "54", yazilim:"Adanet"},
   { url: "http://adamanset.net/", city: "54", yazilim:"HC Haber Ajansı"},
   { url: "https://www.tv264.com.tr/", city: "54", yazilim:"Bilinmiyor"},
+  { url: "https://sozsakarya.com/", city: "54", yazilim:"Daktilo"},
   { url: "http://www.degisimmedya.com/", city: "67", yazilim:"Bilinmiyor"},
   { url: "http://www.inanisgazetesi.com/", city: "67", yazilim:"Web Aksiyon"},
   { url: "http://www.yeniufuk.com.tr/", city: "67", yazilim:"Bilinmiyor"},

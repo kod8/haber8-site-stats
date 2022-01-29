@@ -328,7 +328,6 @@ const SITELIST = [
   { url: "http://www.bartinmanset.com/", city: "74", yazilim:"Url Medya"},
   { url: "http://www.bartinpusula.com.tr/", city: "74", yazilim:"Bilinmiyor"},
   { url: "https://www.bartin.info/", city: "74", yazilim:"TE Bilişim"},
-  { url: "http://www.bartintv.com.tr/", city: "74", yazilim:"Url Medya"},
   { url: "https://bartinhaber74.com/", city: "74", yazilim:"Web Siteci"},
   { url: "http://bartintv.com.tr/", city: "74", yazilim:"Url Medya"},
   { url: "https://www.medyajans.com/", city: "0"},

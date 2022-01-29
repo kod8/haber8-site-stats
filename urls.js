@@ -114,7 +114,6 @@ const SITELIST = [
   { url: "http://www.sinoppusulasi.com.tr/", city: "57", yazilim:"Karadeniz Bilişim"},
   { url: "http://bizimkaradeniz.com.tr/", city: "57", yazilim:"Bilinmiyor"},
   { url: "http://www.sinopflashaber.com/", city: "57", yazilim:"Karadeniz Bilişim"},
-  { url: "http://www.turkelihaber.com/", city: "57", yazilim:"Tumeva Bilişim"},
   { url: "https://www.gerzeninsesi.com/0", city: "57", yazilim:"TE Bilişim"},
   { url: "https://www.duragan.com/", city: "57", yazilim:"Bilinmiyor"},
   { url: "http://www.gerzegundemhaber.com/", city: "57", yazilim:"TE Bilişim"},

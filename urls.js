@@ -11,6 +11,7 @@ const SITELIST = [
   { url: "http://www.duzcesonhaber.com/", city: "81", yazilim:"Haber8"},
   { url: "http://duzceyerelhaber.com/", city: "81", yazilim:"Haber8"},
   { url: "http://akcakocatv.com/", city: "81", yazilim:"Haber8"},
+  { url: "http://konsopahaber.com/", city: "81", yazilim:"Haber8"},
   { url: "http://duzcedetay.com/", city: "81", yazilim:"Haber8"},
   { url: "http://duzceobjektif.com/", city: "81", yazilim:"Haber8"},
   { url: "http://www.duzcemanset.com.tr/", city: "81", yazilim:"Wage Bilişim"},
